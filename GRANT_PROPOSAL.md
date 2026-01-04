@@ -264,7 +264,7 @@ _Note: Actual security audit is out of scope but deliverables will be audit-read
 
 ## Contact
 
-- Twitter: [@raphaBTC](https://twitter.com/raphaBTC)
+- Twitter: [@RaphaStacks](https://twitter.com/RaphaStacks)
 - GitHub: [Rapha-btc](https://github.com/Rapha-btc)
 - Project: [PillarBTC](https://pillarbtc.com)
 
