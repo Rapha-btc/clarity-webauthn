@@ -2,7 +2,7 @@
 
 ## WebAuthn/Passkey Infrastructure for Clarity 5
 
-**Submitted by:** Rapha ([@raphaBTC](https://twitter.com/raphaBTC))  
+**Submitted by:** Rapha ([@RaphaStacks](https://twitter.com/RaphaStacks))  
 **Date:** January 2026  
 **Requested Amount:** [TBD]
 
