@@ -147,7 +147,7 @@ Handles:
 
 ## Team
 
-### Rapha ([@raphaBTC](https://twitter.com/raphaBTC))
+### Rapha ([@RaphaStacks](https://twitter.com/RaphaStacks))
 
 Building [PillarBTC](https://pillarbtc.com) - leveraged sBTC with automated deleveraging.
 
