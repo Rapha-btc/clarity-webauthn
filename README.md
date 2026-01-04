@@ -301,7 +301,7 @@ This library provides:
 
 ### Team
 
-**Rapha** ([@raphaBTC](https://twitter.com/raphaBTC))
+**Rapha** ([@raphastacks](https://twitter.com/RaphaStacks))
 
 - Building [PillarBTC](https://pillarbtc.com) - leveraged sBTC with passkey-powered smart wallets
 - Deep experience with WebAuthn integration challenges
