@@ -233,6 +233,47 @@ prepareForClarity(response: AuthenticatorAssertionResponse): {
 }
 ```
 
+## Relayer Patterns
+
+A critical question for passkey-authenticated smart wallets: **who signs and broadcasts the actual Stacks transaction?**
+
+The user's passkey signs the _payload_ (verified on-chain), but someone still needs to submit the transaction to the network. This SDK documents three patterns:
+
+### 1. Self-Relay
+
+User has STX, signs the Stacks transaction with a traditional wallet, passkey signature is included as a parameter.
+
+```
+User signs passkey challenge → User signs STX tx → User broadcasts
+```
+
+**Pros:** Fully self-custodial, no trust assumptions  
+**Cons:** User needs STX for fees, two signatures required
+
+### 2. Sponsored Transactions
+
+App or backend sponsors the transaction fees. User only signs with passkey.
+
+```
+User signs passkey challenge → App wraps in sponsored tx → App broadcasts
+```
+
+**Pros:** No STX needed, single signature UX  
+**Cons:** Trust the app to broadcast, app pays fees
+
+### 3. x402 Facilitation
+
+A reputation-based relayer handles broadcast via [x402](https://x402.org) micropayment endpoint. Relayer can also sponsor fees.
+
+```
+User signs passkey challenge → x402 relayer broadcasts → Relayer paid via x402
+```
+
+**Pros:** Decentralized relay, aligned incentives, fee sponsorship possible  
+**Cons:** Requires x402 infrastructure, relayer availability
+
+For apps targeting new users without STX, patterns 2 or 3 are essential. BitFlow's Keeper architecture is a reference implementation worth studying for pattern 2.
+
 ## Security Considerations
 
 ### Signature Malleability
@@ -269,7 +310,7 @@ Applications should check these flags match their security requirements.
 
 - [ ] Example applications (React, Vue, Svelte)
 - [ ] Wallet adapter integration
-- [ ] ENS-style passkey registry
+- [ ] Passkey registry (ENS-style)
 
 ### Phase 3: Advanced Features
 
@@ -278,6 +319,8 @@ Applications should check these flags match their security requirements.
 - [ ] Session key delegation
 
 ## Grant Proposal
+
+See the [full grant proposal](https://gist.github.com/Rapha-btc/38c48d7d10a916c7c381c9ab7c98fa69) for funding details.
 
 ### Problem Statement
 
@@ -299,30 +342,6 @@ This library provides:
 - **True self-custody** with hardware security module protection
 - **Better UX** than seed phrases for mainstream users
 
-### Team
-
-**Rapha** ([@raphastacks](https://twitter.com/RaphaStacks))
-
-- Building [PillarBTC](https://pillarbtc.com) - leveraged sBTC with passkey-powered smart wallets
-- Deep experience with WebAuthn integration challenges
-- Validated the problem space through production development
-
-### Budget
-
-| Item                | Cost   | Description                     |
-| ------------------- | ------ | ------------------------------- |
-| Clarity Development | $X     | Core contracts, traits, tests   |
-| TypeScript SDK      | $X     | WebAuthn wrapper, utilities     |
-| Documentation       | $X     | Guides, examples, security docs |
-| Security Review     | $X     | Pre-audit preparation, fixes    |
-| **Total**           | **$X** |                                 |
-
-### Timeline
-
-- **Month 1**: Core Clarity contracts, basic TypeScript SDK
-- **Month 2**: Full SDK, documentation, example apps
-- **Month 3**: Security review, community feedback, polish
-
 ## Contributing
 
 Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
@@ -333,4 +352,4 @@ MIT
 
 ---
 
-_Built for the Stacks ecosystem. Ready for Clarity 5._
+_Sign in with your face. Custody your Bitcoin._
